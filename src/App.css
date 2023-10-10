@@ -1,0 +1,24 @@
+.r-to-l {
+  direction: rtl;
+}
+.l-to-r {
+  direction: ltr;
+}
+@keyframes play_image {
+  0% {
+    filter: blur(5px);
+  }
+  50% {
+    filter: blur(20px);
+  }
+  100% {
+    filter: blur(5px);
+  }
+}
+.dancing {
+  font-family: "Dancing Script", cursive;
+}
+
+.play-image {
+  animation: 5s play_image ease-in infinite;
+}

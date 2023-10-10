@@ -85,7 +85,7 @@ export function InputField({
 
   return (
     <fieldset
-      className={`border px-2 rounded ${
+      className={`border float-none px-2 rounded ${
         constraints["disabled"]
           ? "border-2 border-gray-500"
           : focused
@@ -102,7 +102,7 @@ export function InputField({
       } ${fClassName}`}
     >
       <legend
-        className={`${
+        className={`float-none w-auto text-sm ${
           (value + "").length > 0 ? "block " : "hidden"
         } ${lClassName}`}
       >

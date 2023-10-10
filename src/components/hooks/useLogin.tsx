@@ -3,14 +3,17 @@ import { endpoints } from "../../assets/apis";
 import { apiCalls } from "../../assets/apiCalls";
 import { useToken } from "./useToken";
 import { AuthContext } from "../context/AuthContext";
+import { useSession } from "./useSession";
 
 export function useLogin() {
   const [handleToken] = useToken();
-  const { setExpiredLogin } = useContext(AuthContext);
+  const [handleSession] = useSession();
+  const { setExpiredLogin, setUserInfo } = useContext(AuthContext);
 
   function updateUserInformation(tokenObject) {
     handleToken(tokenObject.access_token);
     setExpiredLogin(false);
+    setUserInfo(handleSession());
   }
 
   const handleLogin = ({ payload = {}, errorCallback = () => {} }) => {

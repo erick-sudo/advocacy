@@ -41,7 +41,7 @@ export function Login() {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center">
-      <div className="absolute inset-0 -z-10 blur-0" style={{background: `url(${images.gavel}) center no-repeat`, backgroundSize: "cover"}}></div>
+      <div className="absolute play-image inset-0 -z-10 blur-0" style={{background: `url(${images.gavel}) center no-repeat`, backgroundSize: "cover"}}></div>
       <div className="rounded-lg text-sm shadow-lg shadow-white/75 bg-white/25 p-4">
         <div className="py-2 px-4 sm:rounded-lg sm:px-10">
           <h2
@@ -64,9 +64,9 @@ export function Login() {
                 required
                 name="identity"
                 colors={{
-                  success: "border-gray-800 text-gray-800 font-bold",
-                  initial: "border-gray-600 text-gray-600 font-bold",
-                  error: "border-red-600 text-red-600 font-bold",
+                  success: "border-dark text-dark font-bold",
+                  initial: "border-secondary text-secondary font-bold",
+                  error: "border-danger text-danger font-bold",
                 }}
               />
               {loginErrors && loginErrors.status === "404 NOT_FOUND" && (
@@ -86,9 +86,9 @@ export function Login() {
                 required
                 name="password"
                 colors={{
-                  success: "border-gray-800 text-gray-800 font-bold",
-                  initial: "border-gray-600 text-gray-600 font-bold",
-                  error: "border-red-600 text-red-600 font-bold",
+                  success: "border-dark text-dark font-bold",
+                  initial: "border-secondary text-secondary font-bold",
+                  error: "border-danger text-danger font-bold",
                 }}
               />
               {loginErrors && loginErrors.status === "401 UNAUTHORIZED" && (
