@@ -12,7 +12,7 @@ export function Dashboard() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [handleSession] = useSession();
-  const { userInfo, setUserInfo, expiredLogin, setExpiredLogin } =
+  const { userInfo, setUserInfo, expiredLogin, setExpiredLogin, logout } =
     useContext(AuthContext);
 
   const tabs = [
@@ -76,15 +76,9 @@ export function Dashboard() {
         <Expired
           onCancel={() => {
             navigate("/");
-            setUserInfo(null);
-            sessionStorage.clear();
-            setExpiredLogin(false);
+            logout();
           }}
-          onLogin={() => {
-            setUserInfo(null);
-            sessionStorage.clear();
-            setExpiredLogin(false);
-          }}
+          onLogin={logout}
         />
       )}
       {userInfo ? (
@@ -112,7 +106,10 @@ export function Dashboard() {
                 ))}
               </div>
               <div className="flex-grow"></div>
-              <div className="text-start px-4 py-2 text-amber-800 m-2 shadow-md cursor-pointer rounded-sm shadow-amber-800 bg-gray-100 hover:bg-amber-800 hover:text-white hover:-translate-y-2 duration-300">
+              <div
+                onClick={logout}
+                className="text-start px-4 py-2 text-amber-800 m-2 shadow-md cursor-pointer rounded-sm shadow-amber-800 bg-gray-100 hover:bg-amber-800 hover:text-white hover:-translate-y-2 duration-300"
+              >
                 Logout
               </div>
             </div>

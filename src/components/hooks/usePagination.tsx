@@ -17,7 +17,7 @@ export function usePagination() {
         Accept: "application/json",
       },
       successCallback: (populationResponse) => {
-        const population = parseInt(populationResponse?.size);
+        const population = parseInt(populationResponse?.count);
         if (
           population &&
           pageNumber <= Math.ceil(population / pagePopulation)

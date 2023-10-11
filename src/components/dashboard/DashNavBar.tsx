@@ -3,13 +3,13 @@ import { AuthContext } from "../context/AuthContext";
 import { images } from "../../assets/images/images";
 
 export function DashNavBar({ currentPage = "Dashboard" }) {
-  const { userInfo, setUserInfo } = useContext(AuthContext);
+  const { userInfo, logout } = useContext(AuthContext);
 
   return (
     <div className="top-0 text-sm sticky z-50 flex p-2">
       <div className="flex-grow flex items-center gap-4">
         <h4 className="text-xl text-amber-800 dancing italic">Kitonga Advocates</h4>
-        <div className="flex-grow text-center text-2xl dancing">{currentPage}</div>
+        <div className="flex-grow text-center text-2xl dancing italic">{currentPage}</div>
       </div>
       <div className="group relative px-4 pb-2 cursor-pointer">
         <div className="flex items-center gap-4">
@@ -30,10 +30,7 @@ export function DashNavBar({ currentPage = "Dashboard" }) {
           <button className="w-full hover:bg-amber-700 hover:text-white duration-200 text-start px-4 py-4">Settings</button>
           <hr></hr>
           <button
-            onClick={() => {
-              setUserInfo(null);
-              sessionStorage.clear();
-            }}
+            onClick={logout}
             className={`w-full hover:bg-amber-700 hover:text-white duration-200 text-start px-4 py-4`}
           >
             <span className="relative">Logout</span>

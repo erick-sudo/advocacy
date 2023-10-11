@@ -10,13 +10,18 @@ export function useLogin() {
   const [handleSession] = useSession();
   const { setExpiredLogin, setUserInfo } = useContext(AuthContext);
 
-  function updateUserInformation(tokenObject) {
+  function updateUserInformation(tokenObject, setLoading) {
     handleToken(tokenObject.access_token);
     setExpiredLogin(false);
     setUserInfo(handleSession());
+    setLoading(false);
   }
 
-  const handleLogin = ({ payload = {}, errorCallback = () => {} }) => {
+  const handleLogin = ({
+    payload = {},
+    setLoading = () => {},
+    errorCallback = () => {},
+  }) => {
     apiCalls.postRequest({
       endpoint: endpoints.getAccessToken,
       httpMethod: "POST",
@@ -25,8 +30,15 @@ export function useLogin() {
         Accept: "application/json",
       },
       httpBody: payload,
-      successCallback: updateUserInformation,
-      errorCallback,
+      successCallback: (res) => {
+        updateUserInformation(res, setLoading);
+      },
+      errorCallback: (err) => {
+        errorCallback(err);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000)
+      },
     });
   };
 
