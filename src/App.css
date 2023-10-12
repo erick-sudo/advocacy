@@ -4,6 +4,24 @@
 .l-to-r {
   direction: ltr;
 }
+.scroll_y {
+  overflow-y: scroll;
+}
+.scroll_x {
+  overflow-x: scroll;
+  display: flex;
+}
+.scroll_y::-webkit-scrollbar,
+.scroll_x::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+  height: 5px;
+}
+.scroll_y::-webkit-scrollbar-thumb,
+.scroll_x::-webkit-scrollbar-thumb {
+  background-color: #6b72805f;
+  border-radius: 10px;
+}
 @keyframes play_image {
   0% {
     filter: blur(5px);

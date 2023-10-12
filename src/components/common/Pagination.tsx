@@ -166,8 +166,8 @@ export function Pagination({
           ref={containerRef}
           className={`${
             direction === "vertical"
-              ? "flex flex-wrap gap-4 p-4"
-              : "flex p-4 gap-4"
+              ? "flex flex-col flex-grow w-full"
+              : "flex p-4"
           }`}
         >
           {items.map((componentData, index) => {

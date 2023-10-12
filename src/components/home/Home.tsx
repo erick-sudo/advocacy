@@ -4,7 +4,6 @@ import { LandingPage } from "./LandingPage";
 import { images } from "../../assets/images/images";
 import { Footer } from "./Footer";
 import { useState } from "react";
-import { ScaleButton } from "../common/ScaleButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
@@ -49,7 +48,7 @@ export function Home() {
           <button className="text-start px-12 m-2 hover:-translate-y-2 py-2 text-lime-600 rounded shadow-md shadow-lime-600 hover:shadow-lg hover:shadow-lime-500 hover:bg-lime-600 hover:text-black duration-300">Logout</button>
         </div>
       )}
-      <div className="bg-black/90 flex-grow font-serif">
+      <div className="flex-grow bg-black/90 font-serif">
         <div className="">
           <NavBar tabs={tabs} setShowNav={setShowNav} showNav={showNav} />
         </div>

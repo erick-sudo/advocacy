@@ -1,7 +1,7 @@
 export function Background({ className = "", background = "rgba(245, 124, 15, .8)" }) {
   
   return (
-    <div className={`absolute inset-0 opacity-[0.8] ${className}`}>
+    <div style={{position: "absolute", inset: 0, opacity: 1, zIndex: 5}} className={`${className}`}>
       <svg
         version="1.1"
         baseProfile="full"
