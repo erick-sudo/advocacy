@@ -5,7 +5,6 @@ import { AuthContext } from "../context/AuthContext";
 import { Login } from "../account/Login";
 import { Expired } from "../common/Expired";
 import { DashNavBar } from "./DashNavBar";
-// import { Background } from "../common/DottedBackground";
 import Cases from "./Cases";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
@@ -16,16 +15,22 @@ import {
   faFolder,
   faRightFromBracket,
   faTasks,
+  faToolbox,
+  faTools,
   faUser,
   faUsers,
   faUsersCog,
 } from "@fortawesome/free-solid-svg-icons";
+import Clients from "./Clients";
+import { Loader } from "../common/Loader";
+import { Dash } from "./Dash";
 
 export function Dashboard() {
   const { pathname } = useLocation();
   const [showNavBar, setShowNavBar] = useState(false);
   const navigate = useNavigate();
   const [handleSession] = useSession();
+  const [loading, setLoading] = useState(false);
   const { userInfo, setUserInfo, expiredLogin, setExpiredLogin, logout } =
     useContext(AuthContext);
 
@@ -46,24 +51,14 @@ export function Dashboard() {
       link: "/dashboard/clients",
     },
     {
-      label: "Hearings",
-      icon: faCalendar,
-      link: "/dashboard/hearings",
-    },
-    {
-      label: "Tasks",
-      icon: faTasks,
-      link: "/dashboard/tasks",
-    },
-    {
       label: "Users",
       icon: faUsers,
       link: "/dashboard/users",
     },
     {
-      label: "Groups",
-      icon: faUsersCog,
-      link: "/dashboard/groups",
+      label: "Settings",
+      icon: faTools,
+      link: "/dashboard/settings",
     },
   ];
 
@@ -85,7 +80,6 @@ export function Dashboard() {
 
   return (
     <div className="fixed inset-0 flex">
-      {/* <Background className="-z-10" background="rgba(229, 231, 235)" /> */}
       {userInfo && expiredLogin && (
         <Expired
           onCancel={() => {
@@ -95,6 +89,7 @@ export function Dashboard() {
           onLogin={logout}
         />
       )}
+      {loading && <Loader className="bg-white/75 z-50 fixed" />}
       {userInfo ? (
         <div className="flex-grow flex flex-col">
           <div>
@@ -153,7 +148,10 @@ export function Dashboard() {
               </div>
               <div className="flex-grow"></div>
               {!showNavBar ? (
-                <button onClick={logout} className="text-amber-800 h-10 duration-300 hover:bg-amber-800 hover:text-white">
+                <button
+                  onClick={logout}
+                  className="text-amber-800 h-10 duration-300 hover:bg-amber-800 hover:text-white"
+                >
                   <FontAwesomeIcon icon={faRightFromBracket} />
                 </button>
               ) : (
@@ -168,8 +166,12 @@ export function Dashboard() {
             <div className="text-sm flex-grow relative">
               <div className="absolute inset-0 overflow-y-scroll">
                 <Routes>
-                  <Route path="" element={<div>Dashboard</div>} />
-                  <Route path="cases" element={<Cases />} />
+                  <Route path="" element={<Dash />} />
+                  <Route path="cases" element={<Cases {...{ setLoading }} />} />
+                  <Route
+                    path="clients"
+                    element={<Clients {...{ setLoading }} />}
+                  />
                 </Routes>
               </div>
             </div>

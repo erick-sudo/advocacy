@@ -18,7 +18,10 @@ export const notifiers = {
       icon: "error",
       title: "Oops...",
       color: "red",
-      text: message.message ? message.message : "An error occured!!",
+      background: "black",
+      text: message.message
+        ? message.error || message.message
+        : "An error occured!!",
     });
   },
   httpSuccess: (message: string) => {
@@ -26,7 +29,17 @@ export const notifiers = {
       icon: "success",
       title: "Success!",
       color: "green",
+      background: "black",
       text: message,
+    });
+  },
+  generalInfo: (message: string) => {
+    Toast.fire({
+      icon: "warning",
+      title: "Warning",
+      color: "orange",
+      text: message,
+      background: "black",
     });
   },
 };

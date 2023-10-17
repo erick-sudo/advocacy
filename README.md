@@ -25,3 +25,9 @@ If you are developing a production application, we recommend updating the config
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+<input
+                  type="submit"
+                  className="hover:scale-100 hover:-translate-y-2 duration-300 w-full py-2 hover:bg-amber-900 hover:text-white rounded shadow-md"
+                  value={submitText}
+                />

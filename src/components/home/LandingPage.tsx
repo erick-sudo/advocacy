@@ -18,6 +18,8 @@ import { Background } from "../common/DottedBackground";
 import { useNavigate } from "react-router-dom";
 import { BsArrowUpRight } from "react-icons/bs";
 import { Carousel, CarouselItem } from "react-bootstrap";
+import { StrokeText } from "../common/StrokeText";
+import { SpeedCounter } from "../common/SpeedCounter";
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -25,22 +27,26 @@ export function LandingPage() {
   const perfections = [
     {
       icon: faGavel,
-      value: "123+",
+      value: 123,
+      prefix: "+",
       desc: "Expert Lawyers",
     },
     {
       icon: faScaleBalanced,
-      value: "98%",
+      value: 98,
+      prefix: "%",
       desc: "Cases Won",
     },
     {
       icon: faHandcuffs,
-      value: "9%",
+      value: 9,
+      prefix: "%",
       desc: "Cases Dismissed",
     },
     {
       icon: faPersonShelter,
-      value: "5000+",
+      value: 5000,
+      prefix: "+",
       desc: "Trusted Clients",
     },
   ];
@@ -139,7 +145,9 @@ export function LandingPage() {
 
       {/* Start */}
       <div className="flex flex-col gap-4 items-center justify-center min-h-[50vh] p-6 text-center relative">
-        <h3 className="md:text-[3em] text-[1.5em] text-amber-500 dancing">KITONGA</h3>
+        <h3 className="md:text-[3em] text-[1.5em] text-amber-500 dancing">
+          KITONGA
+        </h3>
         <div className="text-white dancing text-[3em] xl:text-[5em]">
           We create tunnels from hell to heaven
         </div>
@@ -157,6 +165,14 @@ export function LandingPage() {
             key={index}
             className="sm:min-w-[20rem] sm:max-w-[20rem] border-1 border-amber-700 p-4 flex flex-col items-center bg-black/25 relative"
           >
+            <div className="text-[3em] absolute right-2 top-2 w-16 h-16 flex items-center justify-center font-extrabold font-mono">
+              <StrokeText
+                sz={2}
+                fillColor="transparent"
+                strokeColor="rgb(245, 158, 11, .5)"
+                text={`0${index + 1}`}
+              />
+            </div>
             <div className="absolute inset-0 -z-10 opacity-50">
               <img className="w-full h-full object-cover" src={images.hammer} />
             </div>
@@ -164,7 +180,17 @@ export function LandingPage() {
               <FontAwesomeIcon icon={perfection.icon} />
             </div>
             <h3 className="dancing text-[4em] text-white">
-              {perfection.value}
+              <StrokeText
+                sz={1}
+                fillColor="transparent"
+                strokeColor="white"
+                text={
+                  <div className="flex items-center">
+                    <SpeedCounter value={perfection.value} />
+                    {perfection.prefix}
+                  </div>
+                }
+              />
             </h3>
             <h4 className="text-gray-400">{perfection.desc}</h4>
           </div>
@@ -318,23 +344,28 @@ export function LandingPage() {
                       </span>
                       <div className="pt-8 relative flex-grow">
                         <div className="absolute top-0 bottom-[40%] overflow-hidden">
-                        Aut excepturi esse. Nisi necessitatibus voluptate. Nemo
-                        aut aperiam. Repellat maiores voluptatum. Nam incidunt
-                        facilis. Itaque aperiam ea.Aut excepturi esse. Nisi necessitatibus voluptate. Nemo
-                        aut aperiam. Repellat maiores voluptatum. Nam incidunt
-                        facilis. Itaque aperiam ea.Aut excepturi esse. Nisi necessitatibus voluptate. Nemo
-                        aut aperiam. Repellat maiores voluptatum. Nam incidunt
-                        facilis. Itaque aperiam ea.Aut excepturi esse. Nisi necessitatibus voluptate. Nemo
-                        aut aperiam. Repellat maiores voluptatum. Nam incidunt
-                        facilis. Itaque aperiam ea.Aut excepturi esse. Nisi necessitatibus voluptate. Nemo
-                        aut aperiam. Repellat maiores voluptatum. Nam incidunt
-                        facilis. Itaque aperiam ea.Aut excepturi esse. Nisi necessitatibus voluptate. Nemo
-                        aut aperiam. Repellat maiores voluptatum. Nam incidunt
-                        facilis. Itaque aperiam ea.Aut excepturi esse. Nisi necessitatibus voluptate. Nemo
-                        aut aperiam. Repellat maiores voluptatum. Nam incidunt
-                        facilis. Itaque aperiam ea.Aut excepturi esse. Nisi necessitatibus voluptate. Nemo
-                        aut aperiam. Repellat maiores voluptatum. Nam incidunt
-                        facilis. Itaque aperiam ea.
+                          Aut excepturi esse. Nisi necessitatibus voluptate.
+                          Nemo aut aperiam. Repellat maiores voluptatum. Nam
+                          incidunt facilis. Itaque aperiam ea.Aut excepturi
+                          esse. Nisi necessitatibus voluptate. Nemo aut aperiam.
+                          Repellat maiores voluptatum. Nam incidunt facilis.
+                          Itaque aperiam ea.Aut excepturi esse. Nisi
+                          necessitatibus voluptate. Nemo aut aperiam. Repellat
+                          maiores voluptatum. Nam incidunt facilis. Itaque
+                          aperiam ea.Aut excepturi esse. Nisi necessitatibus
+                          voluptate. Nemo aut aperiam. Repellat maiores
+                          voluptatum. Nam incidunt facilis. Itaque aperiam
+                          ea.Aut excepturi esse. Nisi necessitatibus voluptate.
+                          Nemo aut aperiam. Repellat maiores voluptatum. Nam
+                          incidunt facilis. Itaque aperiam ea.Aut excepturi
+                          esse. Nisi necessitatibus voluptate. Nemo aut aperiam.
+                          Repellat maiores voluptatum. Nam incidunt facilis.
+                          Itaque aperiam ea.Aut excepturi esse. Nisi
+                          necessitatibus voluptate. Nemo aut aperiam. Repellat
+                          maiores voluptatum. Nam incidunt facilis. Itaque
+                          aperiam ea.Aut excepturi esse. Nisi necessitatibus
+                          voluptate. Nemo aut aperiam. Repellat maiores
+                          voluptatum. Nam incidunt facilis. Itaque aperiam ea.
                         </div>
                       </div>
                     </div>

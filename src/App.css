@@ -1,3 +1,7 @@
+
+* {
+  box-sizing: border-box;
+}
 .r-to-l {
   direction: rtl;
 }
@@ -21,6 +25,9 @@
 .scroll_x::-webkit-scrollbar-thumb {
   background-color: #6b72805f;
   border-radius: 10px;
+}
+.box_shadow {
+  box-shadow: 0.15em 0.15em 0.04em;
 }
 @keyframes play_image {
   0% {

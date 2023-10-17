@@ -4,6 +4,7 @@ import { apiCalls } from "../../assets/apiCalls";
 import { useToken } from "./useToken";
 import { AuthContext } from "../context/AuthContext";
 import { useSession } from "./useSession";
+import { notifiers } from "../../assets/notifiers";
 
 export function useLogin() {
   const [handleToken] = useToken();
@@ -34,10 +35,9 @@ export function useLogin() {
         updateUserInformation(res, setLoading);
       },
       errorCallback: (err) => {
+        notifiers.httpError(err);
         errorCallback(err);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000)
+        setLoading(false);
       },
     });
   };

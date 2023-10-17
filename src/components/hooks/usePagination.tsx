@@ -6,6 +6,7 @@ export function usePagination() {
     populationEndpoint,
     pageNumber = 1,
     pagePopulation = 10,
+    setEndpointPopulation,
     successCallback = () => {},
     errorCallback = () => {},
   }) => {
@@ -18,6 +19,11 @@ export function usePagination() {
       },
       successCallback: (populationResponse) => {
         const population = parseInt(populationResponse?.count);
+        if(population && setEndpointPopulation) {
+          setEndpointPopulation(population)
+        } else {
+          setEndpointPopulation(0);
+        }
         if (
           population &&
           pageNumber <= Math.ceil(population / pagePopulation)
